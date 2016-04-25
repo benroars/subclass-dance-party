@@ -25,3 +25,24 @@ body, a:link, a:visited, a:active{
   border-radius:10px;
   position:absolute;
 }
+
+.resizeDancer
+{ 
+
+  border: 50px;
+  border-radius: 10px;
+  position:absolute;
+
+}
+
+.resizeDancer2 {
+  border: 20px;
+  border-radius: 10px;
+  position:absolute;
+
+}
+
+.addColorButton {
+  padding:5px;
+  float: right;
+}
