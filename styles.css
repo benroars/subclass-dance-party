@@ -53,3 +53,19 @@ body, a:link, a:visited, a:active{
   width: 360px;
   background-image: url(./tyler.gif);
 }
+
+.addNyan {
+  padding:5px 12px;
+  float:right;
+
+}
+
+.nyan {
+  height: 200px; 
+  width: 100px;
+  max-width:50%;
+  border: 0px solid black !important;
+  background-image: url(./nyan.gif);
+  background-repeat: no-repeat;
+  background-size:contain;
+}
