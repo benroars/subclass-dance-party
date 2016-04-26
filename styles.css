@@ -46,6 +46,10 @@ body, a:link, a:visited, a:active{
   padding: 5px;
 }
 
-
-#draggable { width: 100px; height: 100px; padding: 0.5em; float: left; margin: 10px 10px 10px 0; }
-#droppable { width: 150px; height: 150px; padding: 0.5em; float: left; margin: 10px; }
+.moveDance {
+  border: 0px solid black !important;
+  border-radius: 100px; 
+  height: 250px; 
+  width: 360px;
+  background-image: url(./tyler.gif);
+}

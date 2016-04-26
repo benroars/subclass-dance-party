@@ -30,5 +30,10 @@ makeDancer.prototype.setPosition = function(top, left) {
 };
 
 makeDancer.prototype.alignLeft = function() {
-  this.$node.css({'position': 'absolute', 'right': '0'});
+  //console.log('asdfas');
+  this.$node.css({'position': 'absolute', 'left': '0'});
+};
+
+makeDancer.prototype.alignBottom = function() {
+  
 };

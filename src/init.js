@@ -59,6 +59,7 @@ $(document).ready(function() {
 
   $('.alignLeft').on('click', function(event) {
     for (var i = 0; i < window.dancers.length; i++) {
+      //debugger;
       window.dancers[i].alignLeft();
     }
   });

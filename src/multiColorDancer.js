@@ -15,7 +15,7 @@ makeColorDancer.prototype.step = function() {
 
   this.$node.click(function(event) {
     //console.log(this);
-    $(this).css({'height': '100px', 'width': '100px'});
+    //$(this).css({'height': '100px', 'width': '100px'});
     $(this).hide();
   });
 };
