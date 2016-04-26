@@ -13,5 +13,10 @@ makeColorDancer.prototype.step = function() {
     //console.log(index);
   this.$node.css({'border': '10px solid ' + colors[index]});
 
+  this.$node.click(function(event) {
+    //console.log(this);
+    $(this).css({'height': '100px', 'width': '100px'});
+    $(this).hide();
+  });
 };
 

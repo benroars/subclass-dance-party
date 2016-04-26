@@ -3,7 +3,8 @@ body, html{
 }
 body{
   margin: 0px;
-  background-color:#444;
+  
+  background-color:#ffffff;
   font-size: 18px;
 }
 body, a:link, a:visited, a:active{
@@ -16,33 +17,35 @@ body, a:link, a:visited, a:active{
 .topbar{
   height:32px;
   background-color: #555;
+  z-index: 1;
 }
 .title{
   background-color: #777;
 }
+
 .dancer{
   border:10px solid red;
   border-radius:10px;
   position:absolute;
 }
 
-.resizeDancer
-{ 
-
-  border: 50px;
-  border-radius: 10px;
-  position:absolute;
-
-}
-
-.resizeDancer2 {
-  border: 20px;
-  border-radius: 10px;
-  position:absolute;
-
-}
 
 .addColorButton {
   padding:5px;
   float: right;
 }
+
+.addMovingDancer {
+  padding:5px;
+  float: right;
+  display:inline;
+}
+
+.alignLeft {
+  float: left;
+  padding: 5px;
+}
+
+
+#draggable { width: 100px; height: 100px; padding: 0.5em; float: left; margin: 10px 10px 10px 0; }
+#droppable { width: 150px; height: 150px; padding: 0.5em; float: left; margin: 10px; }
