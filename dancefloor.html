@@ -42,9 +42,11 @@
       $(document).ready(function(){
         animateDiv();
         //animateDiv2();
-        window.setInterval(function() {
-          calculate(); }
-        , 1000);
+        //window.setInterval(function() {
+        //  calculate(); }
+        //, 1000);
+
+        calculate();
       });
 
       function makeNewPosition(){
@@ -97,6 +99,8 @@
 
       function calculate() {
         var collision = function ($div1, $div2) {
+          if($div1 === undefined || $div2 === undefined){
+          }else {
           var x1 = $div1.offset().left;
           var y1 = $div1.offset().top;
           var h1 = $div1.outerHeight(true);
@@ -110,32 +114,56 @@
           var b2 = y2 + h2;
           var r2 = x2 + w2;
             
-          if (b1 < y2 || y1 > b2 || r1 < x2 || x1 > r2) {
-            return false;
+            if (b1 < y2 || y1 > b2 || r1 < x2 || x1 > r2) {
+              return false;
+            }else{
+              return true;
+            }
           }
-          
-          return true;
+          return false;
         };
 
         var a1 = window.setInterval(function() {
             if (collision($('.a'), $('.c1'))) {
               console.log('collided');
-              $('.c1').hide();
-              clearInterval(this);
+              $('.c1').remove();
+              clear(a1);
             }
         }, 200);
 
+        var a2 = window.setInterval(function() {
+            if (collision($('.a'), $('.c2'))) {
+              console.log('collided');
+              $('.c2').remove();
+              clear(a2);
+            }
+        }, 200);
+        var a3 = window.setInterval(function() {
+            if (collision($('.a'), $('.c3'))) {
+              console.log('collided');
+              $('.c3').remove();
+              clear(a3);
+            }
+        }, 200);
+        var a4 = window.setInterval(function() {
+            if (collision($('.a'), $('.c4'))) {
+              console.log('collided');
+              $('.c4').remove();
+              clear(a4);
+            }
+        }, 200);
+        var a5 = window.setInterval(function() {
+            if (collision($('.a'), $('.c5'))) {
+              console.log('collided');
+              $('.c5').remove();
+              clear(a5);
+            }
+        }, 200);
 
-
-        // for (var i = 0; i < dancers.length; i++) {
-        //   var node = $(dancers[i].$node[0]);
-        //   window.setInterval(function() {
-        //     if (collision($('.a'), node)) {
-        //       console.log('collided');
-        //       node.hide();
-        //     }
-        //   }, 200);
-        // }
+        function clear(node){
+          clearInterval(node);
+        }
+        
       }
     </script>
   </body>
