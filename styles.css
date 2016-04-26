@@ -153,9 +153,12 @@ div.c5 {
   width: 80px;
   height:80px;
   position:fixed;
-  background-image: url(./nyan.gif);
+  background-image: url(./nyan2.gif);
+  transform: scaleX(-1);
   background-repeat: no-repeat;
   background-size:contain;
+  top: 0%;
+  right: 0%;
 }
 
 .count {
@@ -167,4 +170,25 @@ div.c5 {
   bottom: 0%;
   right: 0%;
   
+}
+
+.count2 {
+  font-size: 7em;
+  height: 140px;
+  width: 100px;
+  color: white;
+  position: absolute;
+  bottom: 0%;
+  left: 35px;
+  
+}
+
+.explain {
+  height: 90px;
+  width: 340px;
+  text-align: center;
+  position:fixed;
+  bottom: 0%;
+  left: 35%;
+  color: white;
 }

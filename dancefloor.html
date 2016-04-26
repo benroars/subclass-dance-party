@@ -28,6 +28,7 @@
       <a href="#" class="calculate" data-dancer-maker-function-name3="makeMovingDancer">Calculate</a>
 
       </div>
+
     <div class='a'></div>
 
     <div class='movable'></div>
@@ -40,7 +41,9 @@
 
 
     <div class='count'>0</div>
+    <div class='count2'>0</div>
 
+    <div class='explain'>NYAN BATTLE<p>Use the WASD, and Arrow Keys to Control the Cats<BR>First to 10 Wins</p></div>
     <script src="src/init.js"></script>
 
     <script>
@@ -48,7 +51,7 @@
        // animateDiv();
         calculate();
         window.counter = 0;
-
+        window.counter2 = 0;
       });
 
       function makeNewPosition(){
@@ -182,26 +185,44 @@
         function updateCounter(){
           var c = $('.count');
           c.html(counter.toString());
+
+          var c2 = $('.count2');
+          c2.html(counter2.toString());
         }
 
 
 
         var $div = $('.a');
+        var $div2 = $('.movable');
         $(document).keydown(function(e) {
+          console.log(e);
         switch (e.which) {
-        case 37:
-          $div.css('left', $div.offset().left - 50);
-          break;
-        case 38:
-          $div.css('top', $div.offset().top - 50);
-          break;
-        case 39:
-          $div.css('left', $div.offset().left + 50);
-          break;
-        case 40:
-          $div.css('top', $div.offset().top + 50);
-          break;
-    }
+          case 37:
+            $div2.css('left', $div2.offset().left - 50);
+            break;
+          case 65:
+            $div.css('left', $div.offset().left - 50);
+            break;
+          case 38:
+            $div2.css('top', $div2.offset().top - 50);
+            break;
+          case 87:
+            $div.css('top', $div.offset().top - 50);
+            break;
+          case 39:
+            $div2.css('left', $div2.offset().left + 50);
+            break;
+          case 68:
+            $div.css('left', $div.offset().left + 50);
+            break;
+          case 40:
+            $div2.css('top', $div2.offset().top + 50);
+            break;
+          case 83:
+            $div.css('top', $div.offset().top + 50);
+            break;
+    
+        }
 })
       }
     </script>
