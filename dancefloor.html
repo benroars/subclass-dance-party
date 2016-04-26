@@ -29,6 +29,8 @@
 
       </div>
     <div class='a'></div>
+
+    <div class='movable'></div>
     
     <div class='c1'></div>
     <div class='c2'></div>
@@ -36,17 +38,17 @@
     <div class='c4'></div>
     <div class='c5'></div>
 
+
+    <div class='count'>0</div>
+
     <script src="src/init.js"></script>
 
     <script>
       $(document).ready(function(){
-        animateDiv();
-        //animateDiv2();
-        //window.setInterval(function() {
-        //  calculate(); }
-        //, 1000);
-
+       // animateDiv();
         calculate();
+        window.counter = 0;
+
       });
 
       function makeNewPosition(){
@@ -128,6 +130,8 @@
               console.log('collided');
               $('.c1').remove();
               clear(a1);
+              counter += 1;
+              updateCounter();
             }
         }, 200);
 
@@ -136,27 +140,38 @@
               console.log('collided');
               $('.c2').remove();
               clear(a2);
+              counter += 1;
+              updateCounter();
             }
         }, 200);
+
         var a3 = window.setInterval(function() {
             if (collision($('.a'), $('.c3'))) {
               console.log('collided');
               $('.c3').remove();
               clear(a3);
+              counter += 1;
+              updateCounter();
             }
         }, 200);
+
         var a4 = window.setInterval(function() {
             if (collision($('.a'), $('.c4'))) {
               console.log('collided');
               $('.c4').remove();
               clear(a4);
+              counter += 1;
+              updateCounter();
             }
         }, 200);
+
         var a5 = window.setInterval(function() {
             if (collision($('.a'), $('.c5'))) {
               console.log('collided');
               $('.c5').remove();
               clear(a5);
+              counter += 1;
+              updateCounter();
             }
         }, 200);
 
@@ -164,6 +179,30 @@
           clearInterval(node);
         }
         
+        function updateCounter(){
+          var c = $('.count');
+          c.html(counter.toString());
+        }
+
+
+
+        var $div = $('.a');
+        $(document).keydown(function(e) {
+        switch (e.which) {
+        case 37:
+          $div.css('left', $div.offset().left - 50);
+          break;
+        case 38:
+          $div.css('top', $div.offset().top - 50);
+          break;
+        case 39:
+          $div.css('left', $div.offset().left + 50);
+          break;
+        case 40:
+          $div.css('top', $div.offset().top + 50);
+          break;
+    }
+})
       }
     </script>
   </body>
