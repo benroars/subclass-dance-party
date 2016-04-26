@@ -89,5 +89,12 @@ $(document).ready(function() {
     }
   });
 
+
+  $('.calculate').on('click', function(event) {
+    window.dancers[0].calculate(window.dancers);
+  });
+
+
+
 });
 

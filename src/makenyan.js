@@ -14,7 +14,8 @@ makeNyan.prototype.step = function() {
     //console.log(this);
     //$(this).css({'height': '100px', 'width': '100px'});
    // $(this).css({'transform': 'scaleX(-1)'});
-    $(this).css({'transform': 'rotateY(180deg)'});
+   // $(this).css({'transform': 'rotateY(180deg)'});
+    $(this).css({'display': 'none'});
   });
 };
 

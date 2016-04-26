@@ -69,3 +69,41 @@ body, a:link, a:visited, a:active{
   background-repeat: no-repeat;
   background-size:contain;
 }
+
+.calculate {
+  float: left;
+  padding: 5px;
+}
+
+
+div.a {
+  width: 80px;
+  height:80px;
+
+  position:fixed;
+  background-image: url(./nyan.gif);
+  background-repeat: no-repeat;
+  background-size:contain;
+}
+
+div.b {
+  width: 80px;
+  height:80px;
+
+  position:fixed;
+  right: 0;
+  background-image: url(./nyan.gif);
+  background-repeat: no-repeat;
+  background-size:contain;
+}
+
+div.c {
+  width: 80px;
+  height:80px;
+  background-image: url(./tuna.png);
+  background-size:contain;
+  position:absolute;
+  bottom: 20px;
+  right: 50px;
+
+}
