@@ -97,13 +97,51 @@ div.b {
   background-size:contain;
 }
 
-div.c {
-  width: 80px;
-  height:80px;
+div.c1 {
+  width: 150px;
+  height:150px;
   background-image: url(./tuna.png);
   background-size:contain;
   position:absolute;
-  bottom: 20px;
-  right: 50px;
+  bottom: 25%;
+  right: 25%;
+}
 
+div.c2 {
+  width: 150px;
+  height:150px;
+  background-image: url(./tuna.png);
+  background-size:contain;
+  position:absolute;
+  bottom: 25%;
+  left: 25%;
+}
+
+div.c3 {
+  width: 150px;
+  height:150px;
+  background-image: url(./tuna.png);
+  background-size:contain;
+  position:absolute;
+  top: 25%;
+  right: 25%;
+}
+
+div.c4 {
+  width: 150px;
+  height:150px;
+  background-image: url(./tuna.png);
+  background-size:contain;
+  position:absolute;
+  top: 25%;
+  left: 25%;
+}
+div.c5 {
+  width: 150px;
+  height:150px;
+  background-image: url(./tuna.png);
+  background-size:contain;
+  position:absolute;
+  left: 42%;
+  top: 42%;
 }

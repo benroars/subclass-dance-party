@@ -29,15 +29,19 @@
 
       </div>
     <div class='a'></div>
-    <div class='b'></div>
-    <div class='c'></div>
+    
+    <div class='c1'></div>
+    <div class='c2'></div>
+    <div class='c3'></div>
+    <div class='c4'></div>
+    <div class='c5'></div>
 
     <script src="src/init.js"></script>
 
     <script>
       $(document).ready(function(){
         animateDiv();
-        animateDiv2();
+        //animateDiv2();
         window.setInterval(function() {
           calculate(); }
         , 1000);
@@ -61,7 +65,7 @@
         var oldq = $('.a').offset();
         var speed = calcSpeed([oldq.top, oldq.left], newq);
         
-        $('.a').animate({ top: newq[0], left: newq[1] }, speed, function(){
+        $('.a').animate({ top: newq[0], left: newq[1] }, 1000, function(){
           animateDiv();        
         });
         
@@ -113,12 +117,15 @@
           return true;
         };
 
-        window.setInterval(function() {
-            if (collision($('.a'), $('.c'))) {
+        var a1 = window.setInterval(function() {
+            if (collision($('.a'), $('.c1'))) {
               console.log('collided');
-              $('.c').hide();
+              $('.c1').hide();
+              clearInterval(this);
             }
         }, 200);
+
+
 
         // for (var i = 0; i < dancers.length; i++) {
         //   var node = $(dancers[i].$node[0]);
