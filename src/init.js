@@ -45,8 +45,10 @@ $(document).ready(function() {
     // make a dancer with a random position
     
     var dancer = new dancerMakerFunction(
-      $('body').height() * Math.random(),
-      $('body').width() * Math.random(),
+  //    $('body').height() * Math.random(),
+  //    $('body').width() * Math.random(),
+     Math.floor(Math.random() * (580 - 100 + 1)) + 100,
+     Math.floor(Math.random() * (680 - 100 + 1)) + 100,
       Math.random() * 1000
     );
 
@@ -72,15 +74,17 @@ $(document).ready(function() {
     // make a dancer with a random position
     
     var dancer = new dancerMakerFunction(
-      $('body').height() * Math.random(),
-      $('body').width() * Math.random(),
+  //    $('body').height() * Math.random(),
+  //    $('body').width() * Math.random(),
+     Math.floor(Math.random() * (650 - 100 + 1)) + 100,
+     Math.floor(Math.random() * (750 - 100 + 1)) + 100,
       Math.random() * 1000
     );
     $('body').append(dancer.$node);
 
     window.dancers.push(dancer);
   });
-
+Math.floor(Math.random() * (640 - 100 + 1)) + 100
 
 
   $('.alignLeft').on('click', function(event) {

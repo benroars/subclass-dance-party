@@ -28,8 +28,8 @@
       <a href="#" class="addMovingDancer" data-dancer-maker-function-name3="makeMovingDancer">Add a Moving Dancer</a>
       <a href="#" class="addNyan" data-dancer-maker-function-name4="makeNyan">Add a Nyan</a>
       <a href="#" class="alignLeft" data-dancer-maker-function-name3="makeMovingDancer">Align Left</a>
-      <a href="#" class="calculate" data-dancer-maker-function-name3="makeMovingDancer">Calculate</a>
-      <button type="button" onclick="reset()">Reset</button>
+      <!--a href="#" class="calculate" data-dancer-maker-function-name3="makeMovingDancer">Calculate</a-->
+      <button type="button" onclick="reset()">Reset (Not fully working)</button>
 
     </div>
     <div class='content'>
@@ -83,12 +83,19 @@
         clearInterval(checker);
         clearInterval(checkTuna);
 
+        for(var i = 0; i < numTuna; i++){
+          //console.log($('<div class=c'+i+'></div>'));
+
+          $('.c'+ i ).remove();
+        }
+
         $('.a').css({'top': '0px', 'left': '0px'});
         $('.movable').css({'top': '0%', 'right': '0%'});
        // $('.movable').removeProperty('left');
-        numTuna = 0;
 
         //calculate();
+        numTuna = 0;
+
         window.tunaInit = window.setInterval(function(){
           tunaMaker();
         }, 2000);
@@ -100,6 +107,10 @@
         window.checker = window.setInterval(function(){
           checkForWins();
         }, 200)
+
+        
+        counter = 0;
+        counter2 = 0;
         updateCounter();
       }
 
