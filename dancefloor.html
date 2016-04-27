@@ -29,7 +29,7 @@
       <a href="#" class="addNyan" data-dancer-maker-function-name4="makeNyan">Add a Nyan</a>
       <a href="#" class="alignLeft" data-dancer-maker-function-name3="makeMovingDancer">Align Left</a>
       <!--a href="#" class="calculate" data-dancer-maker-function-name3="makeMovingDancer">Calculate</a-->
-      <button type="button" onclick="start()">START</button>
+      <button type="button" onclick="start()">START (Not fully functional)</button>
       <button type="button" onclick="reset()">RESET (Click multiple times)</button>
 
 
@@ -59,11 +59,30 @@
       $(document).ready(function(){
        // animateDiv();
         
+        calculate();
+        window.counter = 0;
+        window.counter2 = 0;
 
+        window.numTuna = 0;
+
+        window.tunaInit = window.setInterval(function(){
+          tunaMaker();
+        }, 1700);
+
+        window.checkTuna = window.setInterval(function(){
+          checkTunaAmount(tunaInit);
+        }, 1000);
+
+        window.checker = window.setInterval(function(){
+          checkForWins();
+        }, 200)
       });  
 
       function start(){
+          $('.a').css({'top': '0px', 'left': '0px'});
+          $('.movable').css({'top': '0%', 'right': '0%'});
           calculate();
+
 
           window.counter = 0;
           window.counter2 = 0;
@@ -103,17 +122,17 @@
         //calculate();
         numTuna = 0;
 
-        // window.tunaInit = window.setInterval(function(){
-        //   tunaMaker();
-        // }, 2000);
+         window.tunaInit = window.setInterval(function(){
+           tunaMaker();
+         }, 2000);
 
-        // window.checkTuna = window.setInterval(function(){
-        //   checkTunaAmount(tunaInit);
-        // }, 1000);
+         window.checkTuna = window.setInterval(function(){
+           checkTunaAmount(tunaInit);
+         }, 1000);
 
-        // window.checker = window.setInterval(function(){
-        //   checkForWins();
-        // }, 200)
+         window.checker = window.setInterval(function(){
+           checkForWins();
+         }, 200)
 
         
         counter = 0;
