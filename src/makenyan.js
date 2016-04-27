@@ -11,11 +11,9 @@ makeNyan.prototype.step = function() {
   this.$node.addClass('nyan');
 
   this.$node.hover(function(event) {
-    //console.log(this);
-    //$(this).css({'height': '100px', 'width': '100px'});
-    $(this).css({'transform': 'scaleX(-1)'});
+   // $(this).css({'transform': 'scaleX(-1)'});
    // $(this).css({'transform': 'rotateY(180deg)'});
-   // $(this).css({'display': 'none'});
+    $(this).css({'display': 'none'});
   });
 };
 

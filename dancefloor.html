@@ -27,168 +27,222 @@
       <a href="#" class="alignLeft" data-dancer-maker-function-name3="makeMovingDancer">Align Left</a>
       <a href="#" class="calculate" data-dancer-maker-function-name3="makeMovingDancer">Calculate</a>
 
-      </div>
+    </div>
+    <div class='content'>
+      <div class='a'></div> 
+      <div class='movable'></div>
+      
+      <!--div class='c1'></div>
+      <div class='c2'></div>
+      <div class='c3'></div>
+      <div class='c4'></div>
+      <div class='c5'></div-->
 
-    <div class='a'></div>
 
-    <div class='movable'></div>
-    
-    <div class='c1'></div>
-    <div class='c2'></div>
-    <div class='c3'></div>
-    <div class='c4'></div>
-    <div class='c5'></div>
+      <div class='count'>0</div>
+      <div class='count2'>0</div>
 
+      <div class='explain'>NYAN BATTLE:<p>Use the WASD, and Arrow Keys to Control the Cats<BR>First to 10 Wins</p></div>
+    </div>
 
-    <div class='count'>0</div>
-    <div class='count2'>0</div>
-
-    <div class='explain'>NYAN BATTLE<p>Use the WASD, and Arrow Keys to Control the Cats<BR>First to 10 Wins</p></div>
     <script src="src/init.js"></script>
 
     <script>
       $(document).ready(function(){
        // animateDiv();
         calculate();
+
         window.counter = 0;
         window.counter2 = 0;
-      });
 
-      function makeNewPosition(){
+        window.numTuna = 0;
 
-    // Get viewport dimensions (remove the dimension of the div)
-        var h = $(window).height() - 50;
-        var w = $(window).width() - 50;
-    
-        var nh = Math.floor(Math.random() * h);
-        var nw = Math.floor(Math.random() * w);
-    
-        return [nh,nw];    
-    
+        window.tunaInit = window.setInterval(function(){
+          tunaMaker();
+        }, 1500);
+
+        window.setInterval(function(){
+          checkTunaAmount(tunaInit);
+        }, 1000);
+
+        window.checker = window.setInterval(function(){
+          checkForWins();
+        }, 200)
+      });  
+
+      function checkTunaAmount(interval){
+        if(numTuna > 30) {
+          clearInterval(interval);
+          numTuna = 0;
+        }
+      };
+
+      function checkForWins(interval){
+        if(counter >= 10){
+          console.log('Red Cat Wins');
+          clearInterval(tunaInit);
+          clearInterval(checker);
+        }else if(counter2 >= 10){
+          console.log('Blue Cat Wins');
+          clearInterval(tunaInit);
+          clearInterval(checker);
+        }
       }
 
-      function animateDiv(){
-        var newq = makeNewPosition();
-        var oldq = $('.a').offset();
-        var speed = calcSpeed([oldq.top, oldq.left], newq);
-        
-        $('.a').animate({ top: newq[0], left: newq[1] }, 1000, function(){
-          animateDiv();        
-        });
-        
-      };
-      function animateDiv2(){
-        var newq = makeNewPosition();
-        var oldq = $('.b').offset();
-        var speed = calcSpeed([oldq.top, oldq.left], newq);
-        
-        $('.b').animate({ top: newq[0], left: newq[1] }, speed, function(){
-          animateDiv2();        
-        });
-        
-      };
+      var tunaMaker = function() {
+          var bot = $('.content').height() * Math.random();
+          var left = $('.content').width() * Math.random();
 
-      function calcSpeed(prev, next) {
-
-        var x = Math.abs(prev[1] - next[1]);
-        var y = Math.abs(prev[0] - next[0]);
-        
-        var greatest = x > y ? x : y;
-        
-        var speedModifier = 0.1;
-
-        var speed = Math.ceil(greatest/speedModifier);
-
-        return speed;
+          var $tuna = $('<div class=c'+numTuna+'></div>');
+          $tuna.css({'width':'150px', 'height': '150px', 'background-image': 'url(./tuna.png', 'background-size':'contain'});
+          $tuna.css({'position':'fixed', 'bottom': bot, 'left': left});
+          $('.content').append($tuna);
+          numTuna += 1;
+          
+          var x = window.setInterval(function(){
+            if(collision($('.a'), $tuna)){
+              console.log('asdf');
+              $tuna.remove();
+              clear(x);
+              counter += 1;
+              updateCounter();
+              checkForWins();
+            }
+            else if(collision($('.movable'), $tuna)){
+              console.log('asdf');
+              $tuna.remove();
+              clear(x);
+              counter2 += 1;
+              updateCounter();
+              checkForWins();
+            }
+          }, 200);
       };
 
-      function calculate() {
-        var collision = function ($div1, $div2) {
+      var collision = function ($div1, $div2) {
           if($div1 === undefined || $div2 === undefined){
-          }else {
-          var x1 = $div1.offset().left;
-          var y1 = $div1.offset().top;
-          var h1 = $div1.outerHeight(true);
-          var w1 = $div1.outerWidth(true);
-          var b1 = y1 + h1;
-          var r1 = x1 + w1;
-          var x2 = $div2.offset().left;
-          var y2 = $div2.offset().top;
-          var h2 = $div2.outerHeight(true);
-          var w2 = $div2.outerWidth(true);
-          var b2 = y2 + h2;
-          var r2 = x2 + w2;
-            
+          } else {
+            var x1 = $div1.offset().left;
+            var y1 = $div1.offset().top;
+            var h1 = $div1.outerHeight(true);
+            var w1 = $div1.outerWidth(true);
+            var b1 = y1 + h1;
+            var r1 = x1 + w1;
+            var x2 = $div2.offset().left;
+            var y2 = $div2.offset().top;
+            var h2 = $div2.outerHeight(true);
+            var w2 = $div2.outerWidth(true);
+            var b2 = y2 + h2;
+            var r2 = x2 + w2;
+              
             if (b1 < y2 || y1 > b2 || r1 < x2 || x1 > r2) {
               return false;
-            }else{
+            } else {
               return true;
             }
-          }
-          return false;
-        };
-
-        var a1 = window.setInterval(function() {
-            if (collision($('.a'), $('.c1'))) {
-              console.log('collided');
-              $('.c1').remove();
-              clear(a1);
-              counter += 1;
-              updateCounter();
-            }
-        }, 200);
-
-        var a2 = window.setInterval(function() {
-            if (collision($('.a'), $('.c2'))) {
-              console.log('collided');
-              $('.c2').remove();
-              clear(a2);
-              counter += 1;
-              updateCounter();
-            }
-        }, 200);
-
-        var a3 = window.setInterval(function() {
-            if (collision($('.a'), $('.c3'))) {
-              console.log('collided');
-              $('.c3').remove();
-              clear(a3);
-              counter += 1;
-              updateCounter();
-            }
-        }, 200);
-
-        var a4 = window.setInterval(function() {
-            if (collision($('.a'), $('.c4'))) {
-              console.log('collided');
-              $('.c4').remove();
-              clear(a4);
-              counter += 1;
-              updateCounter();
-            }
-        }, 200);
-
-        var a5 = window.setInterval(function() {
-            if (collision($('.a'), $('.c5'))) {
-              console.log('collided');
-              $('.c5').remove();
-              clear(a5);
-              counter += 1;
-              updateCounter();
-            }
-        }, 200);
-
-        function clear(node){
-          clearInterval(node);
         }
+        return false;
+      };
+
+      function clear(node){
+        clearInterval(node);
+      }
+      
+      function updateCounter(){
+        var c = $('.count');
+        c.html(counter.toString());
+
+        var c2 = $('.count2');
+        c2.html(counter2.toString());
+      }
+
+      function calculate() {
+        // var collision = function ($div1, $div2) {
+        //   if($div1 === undefined || $div2 === undefined){
+        //   }else {
+        //   var x1 = $div1.offset().left;
+        //   var y1 = $div1.offset().top;
+        //   var h1 = $div1.outerHeight(true);
+        //   var w1 = $div1.outerWidth(true);
+        //   var b1 = y1 + h1;
+        //   var r1 = x1 + w1;
+        //   var x2 = $div2.offset().left;
+        //   var y2 = $div2.offset().top;
+        //   var h2 = $div2.outerHeight(true);
+        //   var w2 = $div2.outerWidth(true);
+        //   var b2 = y2 + h2;
+        //   var r2 = x2 + w2;
+            
+        //     if (b1 < y2 || y1 > b2 || r1 < x2 || x1 > r2) {
+        //       return false;
+        //     }else{
+        //       return true;
+        //     }
+        //   }
+        //   return false;
+        // };
+
+        // var a1 = window.setInterval(function() {
+        //     if (collision($('.a'), $('.c1'))) {
+        //       console.log('collided');
+        //       $('.c1').remove();
+        //       clear(a1);
+        //       counter += 1;
+        //       updateCounter();
+        //     }
+        // }, 200);
+
+        // var a2 = window.setInterval(function() {
+        //     if (collision($('.a'), $('.c2'))) {
+        //       console.log('collided');
+        //       $('.c2').remove();
+        //       clear(a2);
+        //       counter += 1;
+        //       updateCounter();
+        //     }
+        // }, 200);
+
+        // var a3 = window.setInterval(function() {
+        //     if (collision($('.a'), $('.c3'))) {
+        //       console.log('collided');
+        //       $('.c3').remove();
+        //       clear(a3);
+        //       counter += 1;
+        //       updateCounter();
+        //     }
+        // }, 200);
+
+        // var a4 = window.setInterval(function() {
+        //     if (collision($('.a'), $('.c4'))) {
+        //       console.log('collided');
+        //       $('.c4').remove();
+        //       clear(a4);
+        //       counter += 1;
+        //       updateCounter();
+        //     }
+        // }, 200);
+
+        // var a5 = window.setInterval(function() {
+        //     if (collision($('.a'), $('.c5'))) {
+        //       console.log('collided');
+        //       $('.c5').remove();
+        //       clear(a5);
+        //       counter += 1;
+        //       updateCounter();
+        //     }
+        // }, 200);
+
+        // function clear(node){
+        //   clearInterval(node);
+        // }
         
-        function updateCounter(){
-          var c = $('.count');
-          c.html(counter.toString());
+        // function updateCounter(){
+        //   var c = $('.count');
+        //   c.html(counter.toString());
 
-          var c2 = $('.count2');
-          c2.html(counter2.toString());
-        }
+        //   var c2 = $('.count2');
+        //   c2.html(counter2.toString());
+        // }
 
 
 
@@ -228,3 +282,7 @@
     </script>
   </body>
 </html>
+
+
+
+
