@@ -139,11 +139,11 @@
       }
 
       var tunaMaker = function() {
-          var bot = $('.content').height() * Math.random();
-          var left = $('.content').width() * Math.random();
+      //    var bot = $('.container').height() * Math.random() - 200;
+      //    var left = $('.container').width() * Math.random() - 200;
 
-          var bot = Math.floor(Math.random() * (640 - 100 + 1)) + 100;
-          var left = Math.floor(Math.random() * (640 - 100 + 1)) + 100;
+          var bot = Math.floor(Math.random() * (650 - 100 + 1)) + 100;
+          var left = Math.floor(Math.random() * (800 - 100 + 1)) + 100;
 
           var $tuna = $('<div class=c'+numTuna+'></div>');
           $tuna.css({'width':'150px', 'height': '150px', 'background-image': 'url(./tuna.png', 'background-size':'contain'});
