@@ -67,7 +67,7 @@
 
         window.tunaInit = window.setInterval(function(){
           tunaMaker();
-        }, 1700);
+        }, 170);
 
         window.checkTuna = window.setInterval(function(){
           checkTunaAmount(tunaInit);
@@ -109,7 +109,7 @@
         clearInterval(checker);
         clearInterval(checkTuna);
 
-        for(var i = 0; i < numTuna; i++){
+        for(var i = 0; i < 30; i++){
           //console.log($('<div class=c'+i+'></div>'));
 
           $('.c'+ i ).remove();
