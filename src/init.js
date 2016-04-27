@@ -68,7 +68,7 @@ $(document).ready(function() {
   $('.addNyan').on('click', function(event) {
     var dancerMakerFunctionName = $(this).data('dancer-maker-function-name4');
     var dancerMakerFunction = window[dancerMakerFunctionName];
-    ;
+    
     // make a dancer with a random position
     
     var dancer = new dancerMakerFunction(

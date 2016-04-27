@@ -14,6 +14,9 @@
 
 <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+    <script src='./jquery.bpopup.min.js'></script>
+    
   
   </head>
   <body>
@@ -26,6 +29,7 @@
       <a href="#" class="addNyan" data-dancer-maker-function-name4="makeNyan">Add a Nyan</a>
       <a href="#" class="alignLeft" data-dancer-maker-function-name3="makeMovingDancer">Align Left</a>
       <a href="#" class="calculate" data-dancer-maker-function-name3="makeMovingDancer">Calculate</a>
+      <button type="button" onclick="reset()">Reset</button>
 
     </div>
     <div class='content'>
@@ -45,6 +49,8 @@
       <div class='explain'>NYAN BATTLE:<p>Use the WASD, and Arrow Keys to Control the Cats<BR>First to 10 Wins</p></div>
     </div>
 
+    <div id="element_to_pop_up"></div>
+
     <script src="src/init.js"></script>
 
     <script>
@@ -59,9 +65,9 @@
 
         window.tunaInit = window.setInterval(function(){
           tunaMaker();
-        }, 1500);
+        }, 2000);
 
-        window.setInterval(function(){
+        window.checkTuna = window.setInterval(function(){
           checkTunaAmount(tunaInit);
         }, 1000);
 
@@ -69,6 +75,33 @@
           checkForWins();
         }, 200)
       });  
+
+      function reset(){
+        counter = 0;
+        counter2 = 0;
+        clearInterval(tunaInit);
+        clearInterval(checker);
+        clearInterval(checkTuna);
+
+        $('.a').css({'top': '0px', 'left': '0px'});
+        $('.movable').css({'top': '0%', 'right': '0%'});
+       // $('.movable').removeProperty('left');
+        numTuna = 0;
+
+        //calculate();
+        window.tunaInit = window.setInterval(function(){
+          tunaMaker();
+        }, 2000);
+
+        window.checkTuna = window.setInterval(function(){
+          checkTunaAmount(tunaInit);
+        }, 1000);
+
+        window.checker = window.setInterval(function(){
+          checkForWins();
+        }, 200)
+        updateCounter();
+      }
 
       function checkTunaAmount(interval){
         if(numTuna > 30) {
@@ -82,16 +115,24 @@
           console.log('Red Cat Wins');
           clearInterval(tunaInit);
           clearInterval(checker);
-        }else if(counter2 >= 10){
+          $('#element_to_pop_up').html('RED CAT WINS');
+          $('#element_to_pop_up').bPopup();
+        }
+        else if(counter2 >= 10){
           console.log('Blue Cat Wins');
           clearInterval(tunaInit);
           clearInterval(checker);
+          $('#element_to_pop_up').html('BLUE CAT WINS');
+          $('#element_to_pop_up').bPopup();
         }
       }
 
       var tunaMaker = function() {
           var bot = $('.content').height() * Math.random();
           var left = $('.content').width() * Math.random();
+
+          var bot = Math.floor(Math.random() * (640 - 100 + 1)) + 100;
+          var left = Math.floor(Math.random() * (640 - 100 + 1)) + 100;
 
           var $tuna = $('<div class=c'+numTuna+'></div>');
           $tuna.css({'width':'150px', 'height': '150px', 'background-image': 'url(./tuna.png', 'background-size':'contain'});
@@ -101,7 +142,7 @@
           
           var x = window.setInterval(function(){
             if(collision($('.a'), $tuna)){
-              console.log('asdf');
+              //console.log('asdf');
               $tuna.remove();
               clear(x);
               counter += 1;
@@ -109,7 +150,7 @@
               checkForWins();
             }
             else if(collision($('.movable'), $tuna)){
-              console.log('asdf');
+             // console.log('asdf');
               $tuna.remove();
               clear(x);
               counter2 += 1;
@@ -157,97 +198,9 @@
       }
 
       function calculate() {
-        // var collision = function ($div1, $div2) {
-        //   if($div1 === undefined || $div2 === undefined){
-        //   }else {
-        //   var x1 = $div1.offset().left;
-        //   var y1 = $div1.offset().top;
-        //   var h1 = $div1.outerHeight(true);
-        //   var w1 = $div1.outerWidth(true);
-        //   var b1 = y1 + h1;
-        //   var r1 = x1 + w1;
-        //   var x2 = $div2.offset().left;
-        //   var y2 = $div2.offset().top;
-        //   var h2 = $div2.outerHeight(true);
-        //   var w2 = $div2.outerWidth(true);
-        //   var b2 = y2 + h2;
-        //   var r2 = x2 + w2;
-            
-        //     if (b1 < y2 || y1 > b2 || r1 < x2 || x1 > r2) {
-        //       return false;
-        //     }else{
-        //       return true;
-        //     }
-        //   }
-        //   return false;
-        // };
-
-        // var a1 = window.setInterval(function() {
-        //     if (collision($('.a'), $('.c1'))) {
-        //       console.log('collided');
-        //       $('.c1').remove();
-        //       clear(a1);
-        //       counter += 1;
-        //       updateCounter();
-        //     }
-        // }, 200);
-
-        // var a2 = window.setInterval(function() {
-        //     if (collision($('.a'), $('.c2'))) {
-        //       console.log('collided');
-        //       $('.c2').remove();
-        //       clear(a2);
-        //       counter += 1;
-        //       updateCounter();
-        //     }
-        // }, 200);
-
-        // var a3 = window.setInterval(function() {
-        //     if (collision($('.a'), $('.c3'))) {
-        //       console.log('collided');
-        //       $('.c3').remove();
-        //       clear(a3);
-        //       counter += 1;
-        //       updateCounter();
-        //     }
-        // }, 200);
-
-        // var a4 = window.setInterval(function() {
-        //     if (collision($('.a'), $('.c4'))) {
-        //       console.log('collided');
-        //       $('.c4').remove();
-        //       clear(a4);
-        //       counter += 1;
-        //       updateCounter();
-        //     }
-        // }, 200);
-
-        // var a5 = window.setInterval(function() {
-        //     if (collision($('.a'), $('.c5'))) {
-        //       console.log('collided');
-        //       $('.c5').remove();
-        //       clear(a5);
-        //       counter += 1;
-        //       updateCounter();
-        //     }
-        // }, 200);
-
-        // function clear(node){
-        //   clearInterval(node);
-        // }
-        
-        // function updateCounter(){
-        //   var c = $('.count');
-        //   c.html(counter.toString());
-
-        //   var c2 = $('.count2');
-        //   c2.html(counter2.toString());
-        // }
-
-
-
         var $div = $('.a');
         var $div2 = $('.movable');
+        
         $(document).keydown(function(e) {
           console.log(e);
         switch (e.which) {
@@ -276,9 +229,10 @@
             $div.css('top', $div.offset().top + 50);
             break;
     
-        }
-})
-      }
+          }
+        });
+    }
+
     </script>
   </body>
 </html>

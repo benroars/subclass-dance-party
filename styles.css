@@ -16,7 +16,7 @@ body, a:link, a:visited, a:active{
 
 .content {
   height: 750px;
-  width: 1000px;
+  width: 750px;
 }
 
 .title, .addDancerButton{
@@ -76,6 +76,7 @@ body, a:link, a:visited, a:active{
   background-image: url(./nyan.gif);
   background-repeat: no-repeat;
   background-size:contain;
+  border:0px solid red;
 }
 
 .calculate {
@@ -105,54 +106,6 @@ div.b {
   background-size:contain;
 }
 
-div.c1 {
-  width: 150px;
-  height:150px;
-  background-image: url(./tuna.png);
-  background-size:contain;
-  position:absolute;
-  bottom: 25%;
-  right: 25%;
-}
-
-div.c2 {
-  width: 150px;
-  height:150px;
-  background-image: url(./tuna.png);
-  background-size:contain;
-  position:absolute;
-  bottom: 25%;
-  left: 25%;
-}
-
-div.c3 {
-  width: 150px;
-  height:150px;
-  background-image: url(./tuna.png);
-  background-size:contain;
-  position:absolute;
-  top: 25%;
-  right: 25%;
-}
-
-div.c4 {
-  width: 150px;
-  height:150px;
-  background-image: url(./tuna.png);
-  background-size:contain;
-  position:absolute;
-  top: 25%;
-  left: 25%;
-}
-div.c5 {
-  width: 150px;
-  height:150px;
-  background-image: url(./tuna.png);
-  background-size:contain;
-  position:absolute;
-  left: 42%;
-  top: 42%;
-}
 
 div .movable {
   width: 80px;
@@ -166,7 +119,7 @@ div .movable {
   right: 0px;
 }
 
-.count {
+.count2 {
   font-size: 7em;
   height: 140px;
   width: 100px;
@@ -177,7 +130,7 @@ div .movable {
   
 }
 
-.count2 {
+.count {
   font-size: 7em;
   height: 140px;
   width: 100px;
@@ -189,7 +142,7 @@ div .movable {
 }
 
 .explain {
-  height: 90px;
+  height: 80px;
   width: 340px;
   text-align: center;
   position:fixed;
@@ -197,3 +150,25 @@ div .movable {
   left: 35%;
   color: white;
 }
+
+
+#element_to_pop_up { 
+    background-color:#000;
+    border-radius:15px;
+    color:#000;
+    display:none; 
+    padding:20px;
+    min-width:400px;
+    min-height: 180px;
+    text-align: center;
+    font-size: 6em;
+    color: white;
+}
+
+.b-close{
+    cursor:pointer;
+    position:absolute;
+    right:10px;
+    top:5px;
+}
+
