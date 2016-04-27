@@ -29,7 +29,9 @@
       <a href="#" class="addNyan" data-dancer-maker-function-name4="makeNyan">Add a Nyan</a>
       <a href="#" class="alignLeft" data-dancer-maker-function-name3="makeMovingDancer">Align Left</a>
       <!--a href="#" class="calculate" data-dancer-maker-function-name3="makeMovingDancer">Calculate</a-->
-      <button type="button" onclick="reset()">Reset (Click multiple times)</button>
+      <button type="button" onclick="start()">START</button>
+      <button type="button" onclick="reset()">RESET (Click multiple times)</button>
+
 
     </div>
     <div class='content'>
@@ -56,25 +58,30 @@
     <script>
       $(document).ready(function(){
        // animateDiv();
-        calculate();
+        
 
-        window.counter = 0;
-        window.counter2 = 0;
-
-        window.numTuna = 0;
-
-        window.tunaInit = window.setInterval(function(){
-          tunaMaker();
-        }, 2000);
-
-        window.checkTuna = window.setInterval(function(){
-          checkTunaAmount(tunaInit);
-        }, 1000);
-
-        window.checker = window.setInterval(function(){
-          checkForWins();
-        }, 200)
       });  
+
+      function start(){
+          calculate();
+
+          window.counter = 0;
+          window.counter2 = 0;
+
+          window.numTuna = 0;
+
+          window.tunaInit = window.setInterval(function(){
+            tunaMaker();
+          }, 1700);
+
+          window.checkTuna = window.setInterval(function(){
+            checkTunaAmount(tunaInit);
+          }, 1000);
+
+          window.checker = window.setInterval(function(){
+            checkForWins();
+          }, 200)
+        }
 
       function reset(){
         counter = 0;
@@ -96,17 +103,17 @@
         //calculate();
         numTuna = 0;
 
-        window.tunaInit = window.setInterval(function(){
-          tunaMaker();
-        }, 2000);
+        // window.tunaInit = window.setInterval(function(){
+        //   tunaMaker();
+        // }, 2000);
 
-        window.checkTuna = window.setInterval(function(){
-          checkTunaAmount(tunaInit);
-        }, 1000);
+        // window.checkTuna = window.setInterval(function(){
+        //   checkTunaAmount(tunaInit);
+        // }, 1000);
 
-        window.checker = window.setInterval(function(){
-          checkForWins();
-        }, 200)
+        // window.checker = window.setInterval(function(){
+        //   checkForWins();
+        // }, 200)
 
         
         counter = 0;
